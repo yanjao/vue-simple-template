@@ -3,10 +3,10 @@
     <el-header class='header'>
       <el-row>
         <el-col :span="23">
-          <el-menu default-active="1" mode="horizontal" class="nav_box" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-          	<template v-for="(item , index) in newrouter[0].children">
-          		<router-link tag="div" :to="item.path">
-          	       <el-menu-item v-if="!item.hidden" :index="item.name" >
+          <el-menu :default-active="$route.path" mode="horizontal" class="nav_box" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" >
+          	<template v-for="item in newrouter[0].children" v-if="!item.hidden">
+          		<router-link v-if="!item.hidden&&!item.children" :to="item.path">
+          	       <el-menu-item :index="item.path" >
                     {{ item.name}}
                    </el-menu-item>
                </router-link>
@@ -48,7 +48,7 @@ export default {
     }
   },
   mounted(){
-  	
+  
   }
 }
 </script>

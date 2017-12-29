@@ -24,10 +24,10 @@ const login = {
   	Logins({ commit }, info){
   		return new Promise((resolve, reject) => {
       		let data={};
-      		loginByUserInfo.map(function (item) {
+      		loginByUserInfo.map(function (item) { //获取所以用户信息
       			if(info.username === item.username || info.pew === item.pew){
-      				commit('SET_USERNAME',item.username);
-      				sessionStorage.setItem('USERNAME', item.username);
+      				commit('SET_USERNAME',item.username);  //将username和role进行存储
+      				sessionStorage.setItem('USERNAME', item.username); //存入 session 
       				commit('SET_ROLE',item.role);
       				sessionStorage.setItem('ROLE', item.role);
       				return data={username:item.username,introduce:item.introduce};
@@ -42,7 +42,7 @@ const login = {
   	},
   	Roles({ commit }, newrouter){
         return new Promise((resolve, reject) => {
-      		commit('SET_NEWROUER',newrouter);
+      		commit('SET_NEWROUER',newrouter); //存储最新路由
       		resolve(newrouter);
         }).catch(error => {
             reject(error);
